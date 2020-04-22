@@ -1,2 +1,4 @@
 *.pyc
 .DS_Store
+webui/cnn/model/*.json
+webui/cnn/model/*.h5
