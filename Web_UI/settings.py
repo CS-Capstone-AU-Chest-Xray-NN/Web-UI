@@ -26,7 +26,7 @@ SECRET_KEY = '&z)=5bgv-n3*4bpw*(#^vi(0v40=)$(1@^$wxuxhpj=s8a3xkw'
 DEBUG = True
 #DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'Web_UI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'webui',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'webui_db',
+        'PORT': 5432,
     }
 }
 
