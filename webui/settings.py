@@ -23,6 +23,8 @@ MODEL_DIR = os.path.join(BASE_DIR, 'webui', 'cnn', 'model')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '&z)=5bgv-n3*4bpw*(#^vi(0v40=)$(1@^$wxuxhpj=s8a3xkw'
 
+AES_KEY = 'PeShVmYq3t6w9z$C'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 #DEBUG = int(os.environ.get('DEBUG', default=1))
