@@ -50,7 +50,6 @@ class Model():
     def get(self, filename):
         path = os.path.join(settings.MODEL_DIR, filename)
         if not os.path.exists(path):
-            print('Decrypting file')
             decrypt(settings.AES_KEY, path.rsplit('.', 1)[0] + '.enc', path)
         return path
 
