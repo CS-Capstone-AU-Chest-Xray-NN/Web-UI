@@ -43,7 +43,7 @@ In `docker-compose.yml` change `services.web.env_file` from `.env.dev` to `.env`
 
 Run `docker-compose up --build`
 
-Run `docker-compose run web python manage.py collectstatic`
+Run `docker-compose run web python manage.py collectstatic --no-input`
 
 Run `docker-compose run web python manage.py migrate`
 
