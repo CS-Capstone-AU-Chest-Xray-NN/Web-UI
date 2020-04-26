@@ -27,7 +27,7 @@
                         <form id="upload-form" method="POST" action='upload' enctype="multipart/form-data">
                             {% csrf_token %}
                             <label class='custom-label-btn'>
-                                    <input type='file' id='submit-btn'>
+                                    <input type='file' name="upload" id='submit-btn'>
                                     <i> Upload Image </i>
                             </label>
                         </form>

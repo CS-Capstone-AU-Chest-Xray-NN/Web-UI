@@ -6,6 +6,6 @@ class Image(models.Model):
     image = models.ImageField(upload_to='images/')
 
     @classmethod
-    def create(name, image):
-        obj = cls(name=name, image=image)
+    def create(cls, file):
+        obj = cls(name=file.name, image=file)
         return obj
