@@ -21,8 +21,14 @@ Starting django (**Note:** may need to be run a couple of times before successfu
 docker-compose up
 ```
 
-Clearing database
+Flush database
 
 ```bash
 docker-compose run web python manage.py flush --no-input
+```
+
+Clear migrations
+
+```bash
+docker-compose run web python manage.py migrate cnn zero
 ```
