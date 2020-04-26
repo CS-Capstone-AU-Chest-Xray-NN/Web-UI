@@ -9,7 +9,7 @@
         <script src="{% static 'js/index.js' %}"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     </head>
     <body>
         <section class='header width80'>
@@ -21,17 +21,25 @@
                 <section class='container width80'>
                     <section class='input-container'>
                         <section class='input-img r_border'>
-                            <img id="img" src="#" alt="User Uploaded X-ray">
+                            {% if url %}
+                            <img id="img" src="{{ url }}" width="512" height="512">
+                            {% endif %}
                         </section>
                         <section class='center width80'>
+                        <form id="upload-form" method="POST" action='' enctype="multipart/form-data">
+                            {% csrf_token %}
                             <label class='custom-label-btn'>
-                                <input type='file' id='submit-btn' />
-                                <i> Upload Image </i>
+                                    <input type='file' name="upload" id='submit-btn'>
+                                    <i> Upload Image </i>
                             </label>
+                        </form>
                         </section>
                     </section>
                     <section class='output r_border'>
                         <ul id='diagnosis'>
+                        {% for diagnosis in diagnoses %}
+                            <li>{{ diagnosis.0 }}: {{ diagnosis.1 }}</li>
+                        {% endfor %}
                         </ul>
                     </section>
                 </section>

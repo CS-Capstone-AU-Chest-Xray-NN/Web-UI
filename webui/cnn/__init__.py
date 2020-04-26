@@ -8,6 +8,24 @@ from Crypto.Cipher import AES
 from django.conf import settings
 from tensorflow.keras.models import model_from_json
 
+LABELS = [
+    'Atelectasis',
+    'Cardiomegaly',
+    'Consolidation',
+    'Edema',
+    'Effusion',
+    'Emphysema',
+    'Fibrosis',
+    'Hernia',
+    'Infiltration',
+    'Mass',
+    'No Finding',
+    'Nodule',
+    'Pleural Thickening',
+    'Pneumonia',
+    'Pneumothorax'
+]
+
 def encrypt(key, in_filename, out_filename, size=64*1024):
     iv = os.urandom(16)
     encryptor = AES.new(key, AES.MODE_CBC, iv)
@@ -53,11 +71,14 @@ class Model():
             decrypt(settings.AES_KEY, path.rsplit('.', 1)[0] + '.enc', path)
         return path
 
-    def predict(path):
+    def predict(self, path):
         pred = self.model.predict(self.load_image(path))[0]
         pred[pred > self.threshold] = 0
         pred = pred / self.threshold
-        return pred
+        data = {}
+        for i in range(len(pred)):
+            data[LABELS[i]] = round(pred[i] * 100, 2)
+        return list(map(lambda x: [x[0], '{0:.2f}%'.format(float(x[1]))], sorted(data.items(), key=lambda x: x[1], reverse=True)))
 
-    def load_image(path):
+    def load_image(self, path):
         return cv2.resize(cv2.imread(path), (1024, 1024)).reshape(1, 1024, 1024, 3).astype('float32') / 255

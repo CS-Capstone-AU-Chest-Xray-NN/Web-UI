@@ -1,4 +1,6 @@
+media/
 *.pyc
 .DS_Store
+webui/cnn/model/*.enc
 webui/cnn/model/*.json
 webui/cnn/model/*.h5
