@@ -15,17 +15,21 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MODEL_DIR = os.path.join(BASE_DIR, 'webui', 'cnn', 'model')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+$rk5f^ca4=3ka=6*3(+@1&)^&eqvnot1i^4+7*5nj*0z1*oak'
+SECRET_KEY = '&z)=5bgv-n3*4bpw*(#^vi(0v40=)$(1@^$wxuxhpj=s8a3xkw'
+
+AES_KEY = 'PeShVmYq3t6w9z$C'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 
 # Application definition
@@ -37,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'webui',
+    'webui.cnn',
 ]
 
 MIDDLEWARE = [
@@ -75,14 +81,15 @@ WSGI_APPLICATION = 'webui.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'webui',
-        'USER': 'webui',
-        'PASSWORD': 'webui',
-        'HOST': 'localhost',
-        'PORT': '3306'
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'webui_db',
+        'PORT': 5432,
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
