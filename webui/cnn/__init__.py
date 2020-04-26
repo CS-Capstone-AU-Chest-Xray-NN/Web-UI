@@ -77,7 +77,7 @@ class Model():
         pred = pred / self.threshold
         data = {}
         for i in range(len(pred)):
-            data[LABELS[i]] = str(round(pred[i] * 100, 2))
+            data[LABELS[i]] = round(pred[i] * 100, 2)
         return list(map(lambda x: [x[0], '{0:.2f}%'.format(float(x[1]))], sorted(data.items(), key=lambda x: x[1], reverse=True)))
 
     def load_image(self, path):
