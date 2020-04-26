@@ -1,4 +1,5 @@
 media/
+static/
 *.pyc
 .DS_Store
 webui/cnn/model/*.enc
