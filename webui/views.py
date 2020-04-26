@@ -11,5 +11,9 @@ def home(request):
     if request.method == 'POST':
         image = Image.create(request.FILES['upload'])
         image.save()
-        return render(request, 'main/index.html', {'url': image.image.url})
+        diagnoses = model.predict(image.image.path)
+        return render(request, 'main/index.html', {
+            'url': image.image.url,
+            'diagnoses': diagnoses,
+        })
     return render(request, 'main/index.html')

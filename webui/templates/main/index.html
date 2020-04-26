@@ -37,6 +37,9 @@
                     </section>
                     <section class='output r_border'>
                         <ul id='diagnosis'>
+                        {% for diagnosis in diagnoses %}
+                            <li>{{ diagnosis.0 }}: {{ diagnosis.1 }}</li>
+                        {% endfor %}
                         </ul>
                     </section>
                 </section>
