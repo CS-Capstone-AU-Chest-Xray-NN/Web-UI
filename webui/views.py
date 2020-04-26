@@ -1,5 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.urls import reverse
 
 from webui.cnn import Model
 from webui.cnn.models import Image
@@ -7,11 +8,8 @@ from webui.cnn.models import Image
 model = Model()
 
 def home(request):
-    return render(request, 'main/index.html')
-
-def upload(request):
     if request.method == 'POST':
-        file = request.FILES['upload']
-        image = Image.create(file)
+        image = Image.create(request.FILES['upload'])
         image.save()
-        return redirect('/')
+        return render(request, 'main/index.html', {'url': image.image.url})
+    return render(request, 'main/index.html')
