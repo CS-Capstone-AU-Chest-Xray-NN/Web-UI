@@ -12,15 +12,15 @@ MODEL_DIR = os.path.join(BASE_DIR, 'webui', 'cnn', 'model')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&z)=5bgv-n3*4bpw*(#^vi(0v40=)$(1@^$wxuxhpj=s8a3xkw'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 AES_KEY = 'PeShVmYq3t6w9z$C'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', default=0)
 #DEBUG = int(os.environ.get('DEBUG', default=1))
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
 
 
 # Application definition
@@ -73,9 +73,9 @@ WSGI_APPLICATION = 'webui.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'webui',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': 'webui_db',
         'PORT': 5432,
     }

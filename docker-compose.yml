@@ -14,10 +14,12 @@ services:
       - /var/lib/postgresql/data
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8888
+    command: gunicorn webui.wsgi:application --bind 0.0.0.0:8888
     container_name: webui_web
     volumes:
       - .:/app
+    env_file:
+      - .env.dev
     ports:
       - 8888:8888
     depends_on:

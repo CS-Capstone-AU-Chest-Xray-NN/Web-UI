@@ -32,3 +32,17 @@ Clear migrations
 ```bash
 docker-compose run web python manage.py migrate cnn zero
 ```
+
+## Deploying
+
+Generate a new `SECRET_KEY` using `key.sh`
+
+Copy `.env.dev` to `.env`. Change `DEBUG` to `0` and edit `SECRET_KEY`
+
+In `docker-compose.yml` change `services.web.env_file` from `.env.dev` to `.env`
+
+Run `docker-compose up --build`
+
+Run `docker-compose run web python manage.py migrate`
+
+Run `docker-compose up -d`
