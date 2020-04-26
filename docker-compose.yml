@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: webui_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=webui
+    ports:
+      - 5432:5432
+    volumes:
+      - /var/lib/postgresql/data
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8888
+    container_name: webui_web
+    volumes:
+      - .:/app
+    ports:
+      - 8888:8888
+    depends_on:
+      - db
