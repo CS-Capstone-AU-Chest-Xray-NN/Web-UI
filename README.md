@@ -1,5 +1,7 @@
 # Web-UI
 
+![WebUI](https://github.com/CS-Capstone-AU-Chest-Xray-NN/Web-UI/blob/master/webui.png?raw=true)
+
 ## Development Environment
 
 Running migrations
