@@ -7,3 +7,7 @@ model = Model()
 
 def home(request):
     return render(request, 'main/index.html')
+
+def upload(request):
+    if request.method == 'POST':
+        print('POST')

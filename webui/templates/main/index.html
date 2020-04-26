@@ -9,7 +9,7 @@
         <script src="{% static 'js/index.js' %}"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"
+        <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     </head>
     <body>
         <section class='header width80'>
@@ -24,10 +24,13 @@
                             <img id="img" src="#" alt="User Uploaded X-ray">
                         </section>
                         <section class='center width80'>
+                        <form id="upload-form" method="POST" action='upload' enctype="multipart/form-data">
+                            {% csrf_token %}
                             <label class='custom-label-btn'>
-                                <input type='file' id='submit-btn' />
-                                <i> Upload Image </i>
+                                    <input type='file' id='submit-btn'>
+                                    <i> Upload Image </i>
                             </label>
+                        </form>
                         </section>
                     </section>
                     <section class='output r_border'>
