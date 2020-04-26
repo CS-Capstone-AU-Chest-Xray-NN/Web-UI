@@ -2,6 +2,10 @@
 
 ![WebUI](https://github.com/CS-Capstone-AU-Chest-Xray-NN/Web-UI/blob/master/webui.png?raw=true)
 
+## Training Model
+
+Train the [Neural Network](https://github.com/CS-Capstone-AU-Chest-Xray-NN/Chest-Xray-Diagnostic-Neural-Network) and move the model and weights to `webui/cnn/model/`
+
 ## Development Environment
 
 Running migrations
